@@ -7,7 +7,6 @@ export default class DashboardController {
       return 'not yet logged in'
     } else {
       const user: User | null = await User.findBy('username', auth.user?.username)
-      console.log('user', user)
       return inertia.render('dashboard', { user })
     }
   }

@@ -12,12 +12,11 @@ export default class AuthController {
      * Step 3: Login user
      */
     await ctx.auth.use('web').login(user)
-    // console.log('is authenticated', ctx.auth.isAuthenticated)
 
     /**
      * Step 4: Send them to a protected route
      */
-    ctx.response.redirect('/dashboard')
+    ctx.response.redirect('/app')
   }
 
   async redirectToGithubProvider({ ally }: HttpContext) {

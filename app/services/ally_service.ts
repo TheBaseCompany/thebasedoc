@@ -24,9 +24,11 @@ export default class AllyService {
 
     if (!user) {
       user = new User()
+      user.fullName = githubUser.nickName
       user.username = githubUser.name
       user.email = githubUser.email
       user.password = await hash.make(String(githubUser.token))
+      user.avatarUrl = githubUser.avatarUrl
       await user.save()
     }
     return user

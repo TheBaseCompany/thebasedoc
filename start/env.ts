@@ -31,5 +31,13 @@ export default await Env.create(new URL('../', import.meta.url), {
   |----------------------------------------------------------
   */
   GITHUB_CLIENT_ID: Env.schema.string(),
-  GITHUB_CLIENT_SECRET: Env.schema.string()
+  GITHUB_CLIENT_SECRET: Env.schema.string(),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring libsql package
+  |----------------------------------------------------------
+  */
+  DB_MODE: Env.schema.enum(['local', 'staging', 'production'] as const),
+  DB_URL: Env.schema.string(),
 })

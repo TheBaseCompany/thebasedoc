@@ -17,6 +17,7 @@ const DashboardController = () => import('#controllers/dashboard_controller')
 router
   .group(() => {
     router.get('/app', [DashboardController, 'index']).as('dashboard')
+    router.on('/login').renderInertia('login').as('login')
     router.get('/', [HomeController, 'index']).as('home')
   })
   .use(middleware.auth())
