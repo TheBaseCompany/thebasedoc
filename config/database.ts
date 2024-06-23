@@ -7,7 +7,7 @@ const dbConfig = defineConfig({
     libsql: {
       client: 'libsql',
       connection: {
-        filename: `file:${app.tmpPath('libsql.db')}`
+        filename: 'file:./database/libsql.db',
       },
       useNullAsDefault: true,
       migrations: {
