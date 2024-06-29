@@ -29,3 +29,5 @@ yarn-error.log*
 # libsql database
 /**/*.db
 
+
+*storybook.log

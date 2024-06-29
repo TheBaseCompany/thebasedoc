@@ -2,11 +2,12 @@
   "extends": "@adonisjs/tsconfig/tsconfig.app.json",
   "compilerOptions": {
     "paths": {
-      "~/*": ["./*"],
+      "~/*": ["./*"]
     },
+    "esModuleInterop": true,
     "moduleResolution": "nodenext",
     "rootDir": "./",
     "outDir": "./build",
   },
-  "exclude": ["./inertia/**/*", "node_modules/**/*", "build"]
+  "exclude": ["./inertia/**/*", "node_modules/**/*", "build", "./stories/**/*"]
 }
