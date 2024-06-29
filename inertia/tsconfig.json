@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "preserve",
+    "moduleResolution": "nodenext",
     "module": "ESNext",
     "jsxImportSource": "vue",
     "paths": {

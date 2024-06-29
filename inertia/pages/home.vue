@@ -9,7 +9,7 @@ import { Head, Link } from '@inertiajs/vue3'
   <Head title="Homepage" />
 
   <div class="container !bg-black">
-    <a href="/github/redirect">
+    <a href="/login">
       Login
     </a>
   </div>

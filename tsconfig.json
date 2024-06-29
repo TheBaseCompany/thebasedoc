@@ -1,6 +1,10 @@
 {
   "extends": "@adonisjs/tsconfig/tsconfig.app.json",
   "compilerOptions": {
+    "paths": {
+      "~/*": ["./*"],
+    },
+    "moduleResolution": "nodenext",
     "rootDir": "./",
     "outDir": "./build",
   },
