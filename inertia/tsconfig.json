@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "moduleResolution": "nodenext",
-    "module": "ESNext",
+    "module": "NodeNext",
     "jsxImportSource": "vue",
     "paths": {
       "~/*": ["./*"]
