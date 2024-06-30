@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "moduleResolution": "nodenext",
     "rootDir": "./",
-    "outDir": "./build",
+    "outDir": "./build"
   },
-  "exclude": ["./inertia/**/*", "node_modules/**/*", "build", "./stories/**/*"]
+  "exclude": ["./frontend/**/*", "node_modules/**/*", "build", "./stories/**/*"]
 }
