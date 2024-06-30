@@ -3,11 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "preserve",
-    "module": "ESNext",
+    "moduleResolution": "nodenext",
+    "module": "NodeNext",
     "jsxImportSource": "vue",
     "paths": {
-      "~/*": ["./*"],
+      "~/*": ["./*"]
     }
   },
-  "include": ["./**/*.ts", "./**/*.vue","./**/*.css"]
+  "include": ["./**/*.ts", "./**/*.vue", "./**/*.css"]
 }

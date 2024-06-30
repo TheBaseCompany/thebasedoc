@@ -14,17 +14,19 @@ const AuthController = () => import('#controllers/auth_controller')
 const HomeController = () => import('#controllers/home_controller')
 const DashboardController = () => import('#controllers/dashboard_controller')
 
+router.get('/github/redirect', [AuthController, 'redirectToGithubProvider'])
+router
+  .group(() => {
+    router.on('/login').renderInertia('login').as('login')
+    router.get('/', [HomeController, 'index']).as('home')
+    router.get('/github/callback', [AuthController, 'login'])
+  })
+  .use(middleware.guest())
+
+// Auth routes
 router
   .group(() => {
     router.get('/app', [DashboardController, 'index']).as('dashboard')
-    router.on('/login').renderInertia('login').as('login')
-    router.get('/', [HomeController, 'index']).as('home')
+    router.get('/logout', [AuthController, 'logout'])
   })
   .use(middleware.auth())
-
-// Auth routes
-router.group(() => {
-  router.get('/github/redirect', [AuthController, 'redirectToGithubProvider'])
-  router.get('/github/callback', [AuthController, 'login'])
-  router.get('/logout', [AuthController, 'logout'])
-})
