@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { router } from '@inertiajs/vue3'
 import User from '../../app/models/user'
+// import Button from '~/components/ui/button/Button.vue';
 import Button from '~/components/ui/button/Button.vue';
+
 
 
 defineProps<{ user: User }>()

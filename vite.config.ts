@@ -6,9 +6,9 @@ import adonisjs from '@adonisjs/vite/client'
 
 export default defineConfig({
   plugins: [
-    inertia({ ssr: { enabled: true, entrypoint: 'inertia/app/ssr.ts' } }),
+    inertia({ ssr: { enabled: true, entrypoint: 'frontend/app/ssr.ts' } }),
     vue(),
-    adonisjs({ entrypoints: ['inertia/app/app.ts'], reload: ['resources/views/**/*.edge'] }),
+    adonisjs({ entrypoints: ['frontend/app/app.ts'], reload: ['resources/views/**/*.edge'] }),
   ],
   build: {
     target: 'esnext',
@@ -24,7 +24,7 @@ export default defineConfig({
    */
   resolve: {
     alias: {
-      '~/': `${getDirname(import.meta.url)}/inertia/`,
+      '~/': `${getDirname(import.meta.url)}/frontend/`,
     },
   },
 })

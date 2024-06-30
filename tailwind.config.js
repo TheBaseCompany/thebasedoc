@@ -3,7 +3,7 @@ import animate from 'tailwindcss-animate'
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ['class'],
-  content: ['./inertia/**/*.{ts,tsx,vue}', './resource/**/*.edge'],
+  content: ['./frontend/**/*.{ts,tsx,vue}', './resource/**/*.edge'],
   prefix: '',
   theme: {
     container: {
