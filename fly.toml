@@ -1,15 +1,26 @@
-# fly.toml app configuration file generated for thebasedoc on 2024-07-01T00:30:53+07:00
+# fly.toml app configuration file generated for thebasedoc on 2024-07-01T14:10:15Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'thebasedoc'
-primary_region = 'sin'
+primary_region = 'iad'
 
 [build]
 
+[env]
+  DB_MODE = 'local'
+  GITHUB_CALLBACK_URL = 'https://app.thebasedoc.com/github/callback'
+  HOST = '0.0.0.0'
+  LOG_LEVEL = 'info'
+  NODE_ENV = 'development'
+  NODE_OPTIONS = '--max-old-space-size=256'
+  PORT = '3333'
+  SESSION_DRIVER = 'cookie'
+  TZ = 'UTC'
+
 [http_service]
-  internal_port = 8080
+  internal_port = 3333
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
@@ -18,6 +29,6 @@ primary_region = 'sin'
 
 [[vm]]
   size = 'shared-cpu-1x'
-
-[env]
-NODE_OPTIONS='--max-old-space-size=4096'
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1

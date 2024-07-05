@@ -1,33 +1,35 @@
-# Use Oven's Bun image as the base
-FROM oven/bun:latest as base
+FROM node:20.12.2-alpine3.18 as nodebase
 
 # All deps stage
-FROM base as deps
+FROM nodebase as deps
 WORKDIR /app
-ADD bun.lockb package.json ./
-RUN bun install
+ADD package.json yarn.lock ./
+RUN yarn install
 
-# Production only deps stage
-FROM base as production-deps
+# Build stage
+FROM nodebase as build
 WORKDIR /app
-ADD bun.lockb package.json ./
-RUN bun install --production
-
-# Build stage using Yarn
-FROM node:20.12.2-alpine3.18 as build
-WORKDIR /app
-RUN apk add --no-cache curl bash yarn
 COPY --from=deps /app/node_modules /app/node_modules
 ADD . .
-RUN yarn global add @adonisjs/cli
-# Update the build command to specify an output directory
-RUN yarn node ace build
+RUN node ace build 
 
-# Production stage using Oven's Bun distroless image
-FROM oven/bun:distroless as production
-ENV NODE_ENV=production
+# Production stage
+FROM nodebase as production
 WORKDIR /app
-COPY --from=production-deps /app/node_modules /app/node_modules
-COPY --from=build /app/build /app
-EXPOSE 8080
-CMD ["bun", "run", "./bin/server.js"]
+COPY ./ /app
+COPY --from=deps /app/node_modules /app/node_modules
+COPY --from=build /app/build /app/build
+EXPOSE 3333
+ENV NODE_ENV=production
+ENV TZ=UTC
+ENV PORT=3333
+ENV HOST=0.0.0.0
+ENV LOG_LEVEL=info
+ENV APP_KEY=Xi57h6ZJwM7NN51Tzmg0OqCU_lUvaSu4
+ENV SESSION_DRIVER=cookie
+ENV GITHUB_CLIENT_ID=Iv23li6mhUjoY54VrNum
+ENV GITHUB_CLIENT_SECRET=511abfadc987867f2a1c18808684cc61b2d318ce
+ENV DB_MODE=local
+ENV DB_URL='wss://thebasedoc-staging-patricknewyen.turso.io?authToken=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3MTkxNDg4MzEsImlkIjoiY2IzNWI2YzgtNDgyMC00M2JhLTg4MTItYTE0NTM1NGIwYTRkIn0.LLlmzd86ZV7pGsT6f3f9oqRKaoPOLHH9exrFAUwQYX5Tp0ZsF54QoBd2HLDSKVGv3_vpP_9bPumiQK8MbxPABw'
+RUN node ace migration:run --force
+CMD ["node", "./build/bin/server.js"]
