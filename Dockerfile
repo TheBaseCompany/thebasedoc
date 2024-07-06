@@ -48,7 +48,6 @@ COPY ./ /app
 COPY --from=deps /app/node_modules /app/node_modules
 COPY --from=build /app/build /app/build
 EXPOSE 3333
-RUN echo $DB_URL
 RUN --mount=type=secret,id=APP_KEY \
     --mount=type=secret,id=GITHUB_CLIENT_ID \
     --mount=type=secret,id=GITHUB_CLIENT_SECRET \
@@ -58,5 +57,4 @@ RUN --mount=type=secret,id=APP_KEY \
     GITHUB_CLIENT_SECRET="$(cat /run/secrets/GITHUB_CLIENT_SECRET)" \
     DB_URL="$(cat /run/secrets/DB_URL)" \
     node ace migration:run --force
-
 CMD ["node", "./build/bin/server.js"]
