@@ -12,16 +12,16 @@ const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 createInertiaApp({
   progress: { color: '#5468FF' },
 
-  title: (title) => `${title} - ${appName}`,
+  title: (title: string) => `${title} - ${appName}`,
 
-  resolve: (name) => {
+  resolve: (name: string) => {
     return resolvePageComponent(
       `../pages/${name}.vue`,
       import.meta.glob<DefineComponent>('../pages/**/*.vue')
     )
   },
 
-  setup({ el, App, props, plugin }) {
+  setup({ el, App, props, plugin }: { el: any; App: any; props: any; plugin: any }) {
     createSSRApp({ render: () => h(App, props) })
       .use(plugin)
       .mount(el)

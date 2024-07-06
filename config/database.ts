@@ -1,15 +1,6 @@
 import env from '#start/env'
 import { defineConfig } from '@adonisjs/lucid'
 
-// Function to create a Turso-synced LibSQL client
-// const createTursoClient = () => {
-//   return createClient({
-//     // url: "file:./database/libsql.db",
-//     url: env.get('DB_URL'),
-//     authToken: env.get('DB_TOKEN'),
-//   })
-// }
-
 const dbConfig = defineConfig({
   connection: 'libsql',
   connections: {
@@ -22,6 +13,10 @@ const dbConfig = defineConfig({
         : {
             filename: 'file:./database/libsql.db',
           },
+      pool: {
+        min: 0,
+        idleTimeoutMillis: 5 * 1000,
+      },
       useNullAsDefault: true,
       migrations: {
         naturalSort: true,
