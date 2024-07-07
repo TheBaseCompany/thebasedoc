@@ -10,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu'
+import Toaster from '~/components/ui/toast/Toaster.vue'
 
 function handleLogout() {
   router.get('/logout')
@@ -22,8 +23,9 @@ defineProps<{
 </script>
 
 <template>
-  <div class="bg-white flex flex-row">
-    <div class="font-bold">The Base Doc</div>
+  <Toaster/>
+  <div class="bg-slate-800 flex flex-row justify-between px-4 py-2 items-center">
+    <div class="font-bold text-white">The Base Doc</div>
     <div>
       <!-- <img v-if="user" :src="user.avatarUrl" class="w-8 h-8 rounded-full" /> -->
       <DropdownMenu>

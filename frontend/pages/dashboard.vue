@@ -13,32 +13,51 @@ import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import AppLayout from '~/layouts/AppLayout.vue'
 import Project from 'App/models/project'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card'
+import { useToast } from '~/components/ui/toast/use-toast'
 
 
 defineProps<{ user: User, projects: Project[] }>()
 defineOptions({ layout: AppLayout })
 
-function handleLogout() {
-  router.get('/logout')
-}
-
-const createProjectForm: Project = reactive({
+const createProjectForm: any = reactive({
   name: null,
 })
 
-async function submit() {
-  await router.post('/projects', createProjectForm, {preserveState: true})
-}
+const { toast } = useToast()
 
+function submit() {
+  router.post('/projects', createProjectForm, {
+    preserveState: true,
+    onSuccess: () => {
+      toast({
+        title: 'Project created',
+        description: `Your project \"${createProjectForm.name}\" has been created successfully`,
+      })
+    },
+    onError: (error: any) => {
+      toast({
+        variant: 'destructive',
+        title: 'Error creating project',
+        description: error.name.join(', '), // error.name is an array of strings
+        status: 'error',
+      })
+    },
+  })
+}
 
 </script>
 
 <template>
   <div class="font-bold text-blue-500">Hello {{ user.username }}</div>
   <Popover>
-    <div v-for="project in projects">
-      {{ project.name }}
-    </div>
     <PopoverTrigger>
       <Button>Create Project</Button>
     </PopoverTrigger>
@@ -54,4 +73,8 @@ async function submit() {
       </form>
     </PopoverContent>
   </Popover>
+
+  <div v-for="project in projects">
+    {{ project.name }}
+  </div>
 </template>

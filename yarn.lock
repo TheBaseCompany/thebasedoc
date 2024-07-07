@@ -5062,6 +5062,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vee-validate/zod@npm:^4.13.2":
+  version: 4.13.2
+  resolution: "@vee-validate/zod@npm:4.13.2"
+  dependencies:
+    type-fest: "npm:^4.8.3"
+    vee-validate: "npm:4.13.2"
+    zod: "npm:^3.22.4"
+  checksum: 10c0/f447a23892c0a4371577064294e633af13ba7b1dc587add1b11c4e6baf8f742788c3024746bd6696753981adaf219fdc4896d21cc425fee9cf519cadb8891026
+  languageName: node
+  linkType: hard
+
 "@vinejs/compiler@npm:^2.5.0":
   version: 2.5.0
   resolution: "@vinejs/compiler@npm:2.5.0"
@@ -5201,6 +5212,13 @@ __metadata:
     "@vue/compiler-dom": "npm:3.4.31"
     "@vue/shared": "npm:3.4.31"
   checksum: 10c0/8083959c21b344f8ee5029c0ea91d50118a32b7c7c430971a721785b0349ce92d82d9cf17d7991a283f79b4ec1c68db4d1d182e035c17aa9116aa07ee115bac0
+  languageName: node
+  linkType: hard
+
+"@vue/devtools-api@npm:^6.6.1":
+  version: 6.6.3
+  resolution: "@vue/devtools-api@npm:6.6.3"
+  checksum: 10c0/e9e712f687e901b1ecfcfb958a305db9729d37408677ea8d63189176406196c7c6d4e9580216de590ccbe68037f323c163293e917cfad3834d7f3299cd5a22bb
   languageName: node
   linkType: hard
 
@@ -14032,6 +14050,7 @@ __metadata:
     "@swc/core": "npm:^1.6.3"
     "@types/luxon": "npm:^3.4.2"
     "@types/node": "npm:^20.14.9"
+    "@vee-validate/zod": "npm:^4.13.2"
     "@vinejs/vine": "npm:^2.1.0"
     "@vitejs/plugin-vue": "npm:^5.0.5"
     "@vue/server-renderer": "npm:^3.4.30"
@@ -14057,9 +14076,11 @@ __metadata:
     ts-node: "npm:^10.9.2"
     tsx: "npm:^4.16.0"
     typescript: "npm:5.3"
+    vee-validate: "npm:^4.13.2"
     vite: "npm:^5.3.1"
     vue: "npm:^3.4.30"
     vue-remix-icons: "npm:^3.12.0"
+    zod: "npm:^3.23.8"
   languageName: unknown
   linkType: soft
 
@@ -14395,6 +14416,13 @@ __metadata:
   version: 4.20.1
   resolution: "type-fest@npm:4.20.1"
   checksum: 10c0/c31da16fe170a74c5b7e102e70e764ba8ec6ade128e782a56f842aefa07307df5a6353e6b5601d3b30ff2d856d8b955f89813df639e4758fedcf8e426b2d854e
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^4.8.3":
+  version: 4.21.0
+  resolution: "type-fest@npm:4.21.0"
+  checksum: 10c0/60c09995336ea15a405caa76a9ad9238e7ea324d945519880c560e4ee0845479889c45a51810ca81b0f37abd46229a06d2e17ab9b12d1a5cbe335af56819c92b
   languageName: node
   linkType: hard
 
@@ -14829,6 +14857,18 @@ __metadata:
   version: 1.1.2
   resolution: "vary@npm:1.1.2"
   checksum: 10c0/f15d588d79f3675135ba783c91a4083dcd290a2a5be9fcb6514220a1634e23df116847b1cc51f66bfb0644cf9353b2abb7815ae499bab06e46dd33c1a6bf1f4f
+  languageName: node
+  linkType: hard
+
+"vee-validate@npm:4.13.2, vee-validate@npm:^4.13.2":
+  version: 4.13.2
+  resolution: "vee-validate@npm:4.13.2"
+  dependencies:
+    "@vue/devtools-api": "npm:^6.6.1"
+    type-fest: "npm:^4.8.3"
+  peerDependencies:
+    vue: ^3.4.26
+  checksum: 10c0/a6071e43a14c38535aaae54468969bc4be8cd96f5b71cd6ce7654faec7809a82c05de796dd15248780330da529f76b187450506d22c78aae234288962d66a977
   languageName: node
   linkType: hard
 
@@ -15318,5 +15358,12 @@ __metadata:
   bin:
     z-schema: bin/z-schema
   checksum: 10c0/e4c812cfe6468c19b2a21d07d4ff8fb70359062d33400b45f89017eaa3efe9d51e85963f2b115eaaa99a16b451782249bf9b1fa8b31d35cc473e7becb3e44264
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4, zod@npm:^3.23.8":
+  version: 3.23.8
+  resolution: "zod@npm:3.23.8"
+  checksum: 10c0/8f14c87d6b1b53c944c25ce7a28616896319d95bc46a9660fe441adc0ed0a81253b02b5abdaeffedbeb23bdd25a0bf1c29d2c12dd919aef6447652dd295e3e69
   languageName: node
   linkType: hard

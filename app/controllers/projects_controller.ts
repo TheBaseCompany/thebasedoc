@@ -3,6 +3,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Project from '#models/project'
 import User from '#models/user'
 import inertia from '@adonisjs/inertia/client'
+import { createProjectValidator } from '#validators/project'
 
 export default class ProjectsController {
   // Method to list all projects
@@ -17,7 +18,7 @@ export default class ProjectsController {
   }
 
   // Method to create a new project
-  async store({ auth, request, response, inertia }: HttpContext) {
+  async store({ auth, request, response }: HttpContext) {
     // Extract the authenticated user's ID
     const userId = auth.user?.id
     if (!userId) {
@@ -27,7 +28,8 @@ export default class ProjectsController {
     const user = await User.findOrFail(userId)
 
     // Get the project data from the request, excluding the ownerId
-    const projectData = request.only(['name', 'description'])
+    const projectData = request.only(['name'])
+    await createProjectValidator.validate(projectData)
 
     // Assign the project to the authenticated user
     user.related('projects').create({ ...projectData })
