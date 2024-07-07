@@ -26,15 +26,14 @@ body,
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
+  @apply max-w-2xl mx-auto px-4;
 }
 
 a {
   text-decoration: underline;
   color: #5a45ff;
+}
+
+.page-margin {
+  @apply max-w-2xl mx-auto px-4;
 }

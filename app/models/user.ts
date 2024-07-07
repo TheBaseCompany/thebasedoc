@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon'
 // import { compose } from '@adonisjs/core/helpers'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import Project from './project.js'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
 // import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 // import hash from '@adonisjs/core/services/hash'
 
@@ -34,4 +36,9 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
+
+  @hasMany(() => Project, {
+    foreignKey: 'ownerId',
+  })
+  declare projects: HasMany<typeof Project>
 }

@@ -2,7 +2,7 @@
   "extends": "@adonisjs/tsconfig/tsconfig.app.json",
   "compilerOptions": {
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
     },
     "esModuleInterop": true,
     "moduleResolution": "nodenext",
