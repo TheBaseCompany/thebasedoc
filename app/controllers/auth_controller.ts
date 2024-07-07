@@ -16,7 +16,7 @@ export default class AuthController {
     /**
      * Step 4: Send them to a protected route
      */
-    ctx.response.redirect('/app')
+    ctx.response.redirect('/')
   }
 
   async redirectToGithubProvider({ ally }: HttpContext) {
